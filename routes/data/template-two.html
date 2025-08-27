@@ -3,8 +3,7 @@
 
 <head>
     <meta charset='UTF-8'>
-    <title>New Contact Message</title>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet'>
+    <title>Chidavisa Synergy Hub</title>
     <style>
         body {
             font-family: Tahoma;
@@ -140,29 +139,11 @@
             <img src='https://api.aarglobalconstructionltd.com/servers/chidavisa_db/assets/logo.png' alt='Envelope Icon'>
         </div>
 
-        <h2 class='box-header'>New contact form message</h2>
-        <p class='box-text'>
-            A new contact has just filled 
-            your contact form and submitted the below details, do well to provide response as 
-            promptly as possible.
-        </p>
-
+        <h2 class='box-header'>Hi " . htmlspecialchars($fullName) . ",</h2>
+        <p class='box-text'>Thank you for reaching out to us. We’ve received your message and will get back to you shortly.</p>
 
         <div class='text-box'>
-
-        <p class='message-header'>Name</p>
-        <p class='message'>" . htmlspecialchars($fullName) . "</p>
-        
-        <p class='message-header'>Email</p>
-        <p class='message'>" . htmlspecialchars($email) . "</p>
-
-        <p class='message-header'>Phone</p>
-        <p class='message'>" . htmlspecialchars($phone) . "</p>
-        
-        <p class='message-header'>Enquiry Type</p>
-        <p class='message'>" . htmlspecialchars($enquiryType) . "</p>
-        
-        <p class='message-header'>Message</p>
+        <p class='message-header'>Your Message</p>
         <p class='message'>" . nl2br(htmlspecialchars($message)) . "</p>
         
         </div>

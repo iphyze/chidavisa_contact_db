@@ -114,83 +114,129 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset='UTF-8'>
     <title>New Contact Message</title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet'>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Tahoma;
             background-color: #f6f6f6;
             margin: 0;
             padding: 0;
         }
-
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-weight: normal;
+            text-decoration: none;
+        }
         .container {
-            max-width: 600px;
+            position: relative;
+            max-width: 27rem;
             margin: 20px auto;
             background: #ffffff;
-            border-radius: 8px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 30px 0px rgba(0, 0, 0, 0.05);
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #D9A836;
-            margin-bottom: 20px;
-            text-align: center;
+        .content-box{
+            position: relative;
+            width: 100%;
+            padding: 30px;
         }
-
         .image-container {
-            margin: 30px auto;
+            width: 120px;
+            margin-bottom: 40px;
         }
-
         .image-container img {
-            width: 250px;
+            width: 100%;
             height: auto;
+            object-fit: contain;
         }
-
-        h2 {
-            color: #D9A836;
-            text-align: center;
+        .box-header {
+            position: relative;
+            width: 100%;
+            font-weight: 600;
+            font-size: 20px;
+            color: #3665b0;
+            font-family: Tahoma;
+            margin-bottom: 10px;
         }
-
-        p {
-            color: #333333;
-            line-height: 1.6;
-        }
-
-        strong {
-            color: #000000;
-        }
-
-        .message {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 6px;
-            font-style: italic;
-            color: #444444;
-        }
-
-        .social-icons {
-            text-align: center;
-            margin: 30px 0 10px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            margin: 0 8px;
-        }
-
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .footer {
+        .box-text {
+            position: relative;
+            width: 100%;
             font-size: 12px;
-            color: #aaaaaa;
+            color: #3f3f3f;
+            font-family: Tahoma;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            border-bottom: 1px solid #e8e8e8;
+            padding-bottom: 20px;
+        }
+        .text-box{
+            background-color: rgba(98, 115, 142, 0.121);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .message-header{
+            position: relative;
+            width: 100%;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+        .message {
+            position: relative;
+            width: 100%;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #3f3f3f;
+            text-align: left;
+        }
+        .footer {
+            position: relative;
+            width: 100%;
+            padding: 30px;
+            background-color: #3665b0;
             text-align: center;
-            margin-top: 30px;
+        }
+        .company-name{
+            display: block;
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            transition: all 0.5s linear;
+        }
+        .company-name:hover {
+            opacity: 0.8;
+        }
+        .social-icons{
+            width: 100%;
+            display: inline-block;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            text-align: center;
+        }
+        .social-icons a {
+            border-radius: 40px;
+            margin: 0 4px;
+            font-size: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.5s linear;
+        }
+        .social-icons a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -198,27 +244,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class='container'>
 
+        <div class='content-box'>
+
         <div class='image-container'>
-            <img src='https://aarglobalconstructionltd.com/assets/logo-CQw7h1eZ.png'
-                alt='Envelope Icon'>
+            <img src='https://api.aarglobalconstructionltd.com/servers/chidavisa_db/assets/logo.png' alt='Envelope Icon'>
         </div>
 
-        <h2>New Contact Message from Website</h2>
+        <h2 class='box-header'>New contact form message</h2>
+        <p class='box-text'>
+            A new contact has just filled 
+            your contact form and submitted the below details, do well to provide response as 
+            promptly as possible.
+        </p>
 
-        <p><strong>Name:</strong> " . htmlspecialchars($fullName) . "</p>
-        <p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>
-        <p><strong>Phone:</strong> " . htmlspecialchars($phone) . "</p>
-        <p><strong>Message:</strong></p>
-        <div class='message'>" . nl2br(htmlspecialchars($message)) . "</div>
 
-        <div class='social-icons'>
-            <a href='mailto:info@aarglobalconstructionltd.com'>
-                <img src='https://cdn-icons-png.flaticon.com/512/732/732200.png' alt='Email'>
-            </a>
+        <div class='text-box'>
+
+        <p class='message-header'>Name</p>
+        <p class='message'>" . htmlspecialchars($fullName) . "</p>
+        
+        <p class='message-header'>Email</p>
+        <p class='message'>" . htmlspecialchars($email) . "</p>
+
+        <p class='message-header'>Phone</p>
+        <p class='message'>" . htmlspecialchars($phone) . "</p>
+        
+        <p class='message-header'>Enquiry Type</p>
+        <p class='message'>" . htmlspecialchars($enquiryType) . "</p>
+        
+        <p class='message-header'>Message</p>
+        <p class='message'>" . nl2br(htmlspecialchars($message)) . "</p>
+        
+        </div>
+
         </div>
 
         <div class='footer'>
-            <p>Chidavisa Synergy Hub Team</p>
+            <a href='https://chidavisa.com' class='company-name'>Chidavisa Synergy Hub Team</a>
+
+            <div class='social-icons'>
+                <a href='https://www.instagram.com/chidavisahub?igsh=MWVpYWw4dHc4a2FuOQ==' target='_blank'>Instagram</a>
+                <a>|</a>
+                <a href='https://wa.link/6jjel9' target='_blank'>WhatsApp</a>
+            </div>
         </div>
     </div>
 </body>
@@ -238,83 +306,129 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset='UTF-8'>
-    <title>Email Confirmation</title>
+    <title>Chidavisa Synergy Hub</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Tahoma;
             background-color: #f6f6f6;
             margin: 0;
             padding: 0;
         }
-
+        *{
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-weight: normal;
+            text-decoration: none;
+        }
         .container {
-            max-width: 600px;
+            position: relative;
+            max-width: 27rem;
             margin: 20px auto;
             background: #ffffff;
-            border-radius: 8px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 30px 0px rgba(0, 0, 0, 0.05);
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #D9A836;
-            margin-bottom: 20px;
+        .content-box{
+            position: relative;
+            width: 100%;
+            padding: 30px;
         }
-
-        .header {
-            color: #D9A836;
-        }
-
         .image-container {
-            margin: 30px 0;
+            width: 120px;
+            margin-bottom: 40px;
         }
-
         .image-container img {
-            width: 240px;
+            width: 100%;
             height: auto;
+            object-fit: contain;
         }
-
-        h2 {
-            color: #333333;
+        .box-header {
+            position: relative;
+            width: 100%;
+            font-weight: 600;
+            font-size: 20px;
+            color: #3665b0;
+            font-family: Tahoma;
+            margin-bottom: 10px;
         }
-
-        p {
-            color: #666666;
-            line-height: 1.6;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #D9A836;
-            color: #ffffff !important;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 30px;
-        }
-
-        .social-icons {
-            margin: 30px 0 10px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            margin: 0 8px;
-        }
-
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .footer {
+        .box-text {
+            position: relative;
+            width: 100%;
             font-size: 12px;
-            color: #aaaaaa;
-            margin-top: 30px;
+            color: #3f3f3f;
+            font-family: Tahoma;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            border-bottom: 1px solid #e8e8e8;
+            padding-bottom: 20px;
+        }
+        .text-box{
+            background-color: rgba(98, 115, 142, 0.121);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .message-header{
+            position: relative;
+            width: 100%;
+            font-size: 12px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #1e1e1e;
+        }
+        .message {
+            position: relative;
+            width: 100%;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: #3f3f3f;
+            text-align: left;
+        }
+        .footer {
+            position: relative;
+            width: 100%;
+            padding: 30px;
+            background-color: #3665b0;
+            text-align: center;
+        }
+        .company-name{
+            display: block;
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+            transition: all 0.5s linear;
+        }
+        .company-name:hover {
+            opacity: 0.8;
+        }
+        .social-icons{
+            width: 100%;
+            display: inline-block;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            text-align: center;
+        }
+        .social-icons a {
+            border-radius: 40px;
+            margin: 0 4px;
+            font-size: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.5s linear;
+        }
+        .social-icons a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -322,29 +436,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class='container'>
 
+        <div class='content-box'>
+
         <div class='image-container'>
-            <img src='https://aarglobalconstructionltd.com/assets/logo-CQw7h1eZ.png'
-                alt='Envelope Icon'>
+            <img src='https://api.aarglobalconstructionltd.com/servers/chidavisa_db/assets/logo.png' alt='Envelope Icon'>
         </div>
 
-        <h2 class='header'>Hi " . htmlspecialchars($fullName) . ",</h2>
-        <p>Thank you for reaching out to us. We’ve received your message and will get back to you shortly.</p>
+        <h2 class='box-header'>Hi " . htmlspecialchars($fullName) . ",</h2>
+        <p class='box-text'>Thank you for reaching out to us. We’ve received your message and will get back to you shortly.</p>
 
-        <hr style='border: none; border-top: 1px solid #eee; margin: 30px 0;'>
+        <div class='text-box'>
+        <p class='message-header'>Your Message</p>
+        <p class='message'>" . nl2br(htmlspecialchars($message)) . "</p>
+        
+        </div>
 
-        <p><strong>Your Message:</strong></p>
-        <p style='font-style: italic; color: #444444;'>" . nl2br(htmlspecialchars($message)) . "</p>
-
-        <a href='https://aarglobalconstructionltd.com' class='btn'>VISIT WEBSITE</a>
-
-        <div class='social-icons'>
-            <a href='mailto:info@aarglobalconstructionltd.com'>
-                <img src='https://cdn-icons-png.flaticon.com/512/732/732200.png' alt='Email'>
-            </a>
         </div>
 
         <div class='footer'>
-            <p>Regards,<br>" . htmlspecialchars($siteName) . " Team</p>
+            <a href='https://chidavisa.com' class='company-name'>Chidavisa Synergy Hub Team</a>
+
+            <div class='social-icons'>
+                <a href='https://www.instagram.com/chidavisahub?igsh=MWVpYWw4dHc4a2FuOQ==' target='_blank'>Instagram</a>
+                <a>|</a>
+                <a href='https://wa.link/6jjel9' target='_blank'>WhatsApp</a>
+            </div>
         </div>
     </div>
 </body>
